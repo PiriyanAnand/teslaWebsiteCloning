@@ -1,0 +1,635 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden; 
+    overflow-y: scroll;
+}
+
+body.noScroll{
+    overflow-y: hidden;
+}
+
+.forDesktop{
+    display: none;
+}
+
+.forMobile{
+    display: initial;
+}
+
+@media screen and (min-width: 1200px){
+    .forDesktop{
+        display: initial;
+    }
+
+    .forMobile{
+        display: none;
+    }
+}
+
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 20px 40px;
+    transition: all 0.5s ease-in-out;
+    background-color: transparent;
+    color: white;
+}
+
+.hide{
+    transform: translateY(-100%);
+}
+
+.changeBackgroundColor{
+    background-color: white;
+    color: black;
+}
+
+a.logo{
+    width: 152px;
+    height: 24px;
+    color: inherit;
+}
+
+#support-icon,
+#language-icon,
+#tesla-account-icon{
+    color: inherit;
+    font-size: 24px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background 0.6s ease-in-out;
+}
+
+header a{
+    color: inherit;
+}
+
+header nav a{
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+header nav.centerNavBar{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 530;
+}
+
+header nav.centerNavBar button{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 4px;
+    transition: background 0.6s ease-in-out;
+}
+
+#menuButton{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    border-radius: 4px;
+    transition: background 0.6s ease-in-out;
+}
+
+#menuButton:hover{
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+header nav.centerNavBar button:hover{
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+header nav.rightNavBar{
+    text-align: right;
+}
+
+header nav.rightNavBar a i:hover{
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+#vehiclesButton.colorChangeWhenHover{
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.flexContainerForDropDown{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.flexBoxForSideBar{
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: right;
+
+    transition: all 0.5s linear;
+    overflow-y: auto;
+}
+
+.flexBoxForSideBar.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropDownForVehicles,
+.dropDownForEnergy,
+.dropDownForCharging,
+.dropDownForDiscover,
+.dropDownForShop{
+    position: fixed;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background-color: white;
+    font-family: inherit;
+    color: black;
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.dropDownForVehicles{
+    z-index: 998;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: start;
+    align-items: center;
+    top: -100%;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+}
+
+.dropDownForVehicles.active{
+    top:0;
+    opacity:1;
+}
+
+
+
+.carImages-1{
+    grid-row: 1/2;
+    grid-column: 2/3;
+}
+
+.carImages-2{
+    grid-row: 1/2;
+    grid-column: 3/4;
+}
+.carImages-3{
+    grid-row: 1/2;
+    grid-column: 4/5;
+}
+.carImages-4{
+    grid-row: 1/2;
+    grid-column: 5/6;
+    margin-right: 20px;
+}
+.carImages-5{
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+.carImages-6{
+    grid-row: 2/3;
+    grid-column: 3/4;
+}
+.carCard{
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.imageClass{
+    grid-area: 1/1/2/3;
+    width: 15vw;
+    height: 7.5vw;
+}
+.modelName{
+    grid-area: 2/1/3/3;
+    font-size: 17px;
+    text-align: center;
+}
+
+.flexBoxForLearnOrder{
+    grid-area: 3/1/4/3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.learnLink{
+    width: fit-content;
+    color: #66676b;
+    text-align: right;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #66676b;
+    transition: all 0.5s ease-in-out;   
+}
+.orderLink{
+    width: fit-content;
+    color: #66676b;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 1px solid #66676b;
+    transition: all 0.5s ease-in-out;
+}
+
+.learnLink:hover,
+.orderLink:hover{
+    color: black;
+}
+.sideNavLinks{
+    grid-row: 1/3;
+    grid-column: 6/7;
+    border-left: 2px solid #e2e2e2;
+}
+
+.sideNavLinks a{
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.5s ease-in-out;
+    padding-top: 20px;
+    margin-left: 40px;
+}
+
+.sideNavLinks a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.sideNavLinks a:hover::after {
+    opacity: 1;
+}
+
+
+.dropDownForEnergy{
+
+    opacity: 0;
+}
+
+.dropDownForCharging{
+    opacity: 0;
+}
+
+.dropDownForDiscover{
+    opacity: 0;
+}
+
+.dropDownForShop{
+    opacity: 0;
+}
+
+
+
+.closeButton{
+    font-size: 30px;
+    font-family: inherit;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+    border: none;
+    background-color: transparent;
+    padding: 0px 10px 0px 10px;
+    transition: background 0.6s ease-in-out;
+}
+
+.sideBarOptions{
+    display: flex;
+    justify-content: space-between;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 600;
+    color: black;
+    padding: 15px 15px 15px 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: background 0.6s ease-in-out;
+}
+
+.sideBarOptions1{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.sideBarOptions:hover{
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.closeButton:hover{
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+section .content{
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    width: 100%;
+    height: 100svh;
+    padding-top: 15svh;
+    padding-bottom: 15svh;
+    text-align: center;
+}
+
+section .content a{
+    color: inherit;
+    text-decoration: none;
+}
+
+#weirdUnderlineStuff{
+    border-bottom: 2px solid #fefffeb5;
+    transition: all 0.25s ease-in-out;
+}
+
+#weirdUnderlineStuff:hover{
+    border-bottom: 2px solid white;
+}
+
+section .contentForSection1{
+    display: grid;
+    grid-template-rows: min-content min-content min-content min-content;
+    width: 100%;
+    height: 100svh;
+    padding-top: 15svh;
+    padding-bottom: 15svh;
+    text-align: center;
+}
+
+section h1{
+    font-size: 5rem;
+    font-weight: 530;
+}
+
+section p{
+    font-size: 1.5rem;
+    font-weight: 530;
+}
+
+section .buttonsForSections a{
+    display: block;
+    background: white;
+    padding: 15px 30px 15px 30px;
+    font-size: 14px;
+    font-weight: 530;
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    border-radius: 4px;
+}
+
+section .buttonsForSections a:first-child{
+    background-color: #3c6cdc;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+section .buttonsForSections a:first-child:hover{
+    background-color: #3854b4;
+}
+
+section .buttonsForSections{
+    display: grid;
+    min-width: 500px;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    column-gap: 20px;
+}
+
+@media screen and (max-width: 1200px){
+    section .buttonsForSections{
+        column-gap: 7.5px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section .buttonsForSections{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    section .buttonsForSections a{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 75px;
+        padding-right: 75px     ;
+    }
+
+    section h1{
+        font-size: 4.5rem;
+    }
+}
+
+#section-9 .buttonsForSections{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#section-9 .buttonsForSections a{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 75px;
+    padding-right: 75px     ;
+}
+
+.video-section video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contentOnVideo{
+    position: relative;
+    padding-top: 55vh;
+    padding-left: 8vh;
+    z-index: 1;
+    color: white;
+    text-align: left;
+    font-size: 3rem;
+    font-weight: 530;
+}
+
+.contentOnVideo .buttonForVideo{
+    margin-top: 30px;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    font-size: 18px;
+    width: max-content;
+    padding: 10px 20px 10px 20px;
+}
+
+.contentOnVideo .buttonForVideo a{
+    text-decoration: none;
+    text-align: center;
+    color: inherit;
+}
+
+@media screen and (max-width:1200px) {
+    .contentOnVideo{
+        padding-top: 75vh;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .contentOnVideo .buttonForVideo{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 90%;
+        background-color: white;
+        color: black;
+        border-radius: 4px;
+        font-size: 18px;
+    }    
+}
+
+.containerForFooterMessage{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+}
+
+.containerForFooterMessage .message{
+    padding: 3.8% 30% 4.8% 30%;
+    font-size: 12px;
+    text-align: center;
+    color: #6a6663;
+}
+
+.containerForFooterMessage .message a{
+    color: #383c40;
+    font-weight: 500;
+    transition: all 0.25s linear;
+}
+
+.containerForFooterMessage .message a:hover{
+    color: #1d1e1f;
+}
+
+.containerForFooterMessage .footerNavBar{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5%;
+    background-color: white;
+}
+
+.containerForFooterMessage .footerNavBar a{
+    padding: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color:#5c5f63;
+    text-decoration: none;
+
+}
+
+@media screen and (max-width:1200px){
+    .containerForFooterMessage .message{
+        padding: 3.8% 10% 4.8% 10%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .containerForFooterMessage .message{
+        padding: 6% 7.5% 25% 7.5%;
+    }
+    .containerForFooterMessage .footerNavBar{
+        flex-direction: column;
+        padding-bottom: 15%;
+    }
+    .footerNavBarContent-1,
+    .footerNavBarContent-2,
+    .footerNavBarContent-3,
+    .footerNavBarContent-5{
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+    .footerNavBarContent-4{
+        display: none;
+    }
+    .footerNavBarContent-6{
+        display: none;
+    }
+    .footerNavBarContent-7{
+        display: none;
+    }
+}
